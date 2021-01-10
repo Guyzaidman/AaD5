@@ -1,12 +1,8 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public abstract class SuperState implements State{
-    public HashMap<String, State> innerStates;
-//    public HashMap<State, State> currentStates;
-//    public State getState(String name){
-//
-//    }
+    public State currentState;
+    public ArrayList<State> innerStates;
 
     public void insertState(State s){
         this.innerStates.add(s);
@@ -14,6 +10,14 @@ public abstract class SuperState implements State{
 
     public void removeState(State s){
         this.innerStates.remove(s);
+    }
+
+    public void setCurrentState(State s) {
+        if (this.currentState != null) {
+            this.currentState.handleExit();
+        }
+        s.handleEntry();
+        this.currentState = s;
     }
 }
 

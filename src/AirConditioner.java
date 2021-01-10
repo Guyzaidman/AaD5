@@ -16,7 +16,9 @@ public class AirConditioner {
     }
 
     public void setCurrentState(State s){
-        this.currentState.handleExit();
+        if (this.currentState != null) {
+            this.currentState.handleExit();
+        }
         s.handleEntry();
         this.currentState = s;
     }

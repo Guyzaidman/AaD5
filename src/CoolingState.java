@@ -1,23 +1,22 @@
-public class waitState implements State {
-    private AirConditioner ac;
-    public waitState(AirConditioner ac) {
-        this.ac = ac;
-
+public class CoolingState implements State {
+    private SuperState operationState;
+    public CoolingState(OperationState operationState) {
+        this.operationState = operationState;
     }
 
     @Override
     public String getName() {
-        return "WAIT";
+        return null;
     }
 
     @Override
     public void handleEntry() {
-
+        System.out.println("OPERATION-COOLING");
     }
 
     @Override
     public void handleExit() {
-        System.out.println("WAITING 30 SECONDS");
+
     }
 
     @Override
