@@ -24,4 +24,9 @@ public class offState implements State {
     public void handleDo() {
 
     }
+
+    @Override
+    public void setCurrentState(State s) {
+
+    }
 }
