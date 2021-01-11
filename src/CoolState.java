@@ -30,6 +30,11 @@ public class CoolState implements State {
 
     }
 
+    @Override
+    public void notifyChange() {
+
+    }
+
     public float getCTemp(){
         return this.mode.getCTemp();
     }

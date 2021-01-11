@@ -29,4 +29,9 @@ public class offState implements State {
     public void setCurrentState(State s) {
 
     }
+
+    @Override
+    public void notifyChange() {
+
+    }
 }

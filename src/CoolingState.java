@@ -28,4 +28,9 @@ public class CoolingState implements State {
     public void setCurrentState(State s) {
 
     }
+
+    @Override
+    public void notifyChange() {
+
+    }
 }
