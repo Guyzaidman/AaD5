@@ -40,6 +40,32 @@ public class OperationState extends SuperState {
 
     }
 
+    @Override
+    public void notifyChange() {
+        if(this.currentState == this.fanningState){
+            if (this.on.getModeState() instanceof CoolState &&
+                this.getRTemp() >= this.getCTemp() + 2 && this.isFanning){
+
+                this.setCurrentState(this.coolingState);
+            }
+            else if (this.on.getModeState() instanceof HeatState &&
+                    this.getRTemp() <= this.getCTemp() - 2 && this.isFanning){
+
+                this.setCurrentState(this.heatingState);
+            }
+        }
+        else if (this.currentState == this.coolingState){
+            if (this.getRTemp() <= this.getCTemp() - 2){
+                this.setCurrentState(this.fanningState);
+            }
+        }
+        else { // this.currentState == this.heatingState
+            if (this.getRTemp() >= this.getCTemp() + 2){
+                this.setCurrentState(this.fanningState);
+            }
+        }
+    }
+
 
     public float getCTemp(){
         return this.on.getCTemp();
@@ -48,5 +74,9 @@ public class OperationState extends SuperState {
 
     public float getRTemp(){
         return this.on.getRTemp();
+    }
+
+    public void setFanning(boolean b){
+        this.isFanning = b;
     }
 }

@@ -37,6 +37,20 @@ public class ModeState extends SuperState{
 
     }
 
+    @Override
+    public void notifyChange() {
+        if (this.currentState == this.coolState){
+            if (this.getRTemp() + 5 <= this.getCTemp()){
+                this.setCurrentState(this.heatState);
+            }
+        }
+        else { //this.currentState == this.heatstate
+            if (this.getRTemp() + 5 > this.getCTemp()){
+                this.setCurrentState(this.coolState);
+            }
+        }
+    }
+
 
     public float getCTemp(){
         return this.on.getCTemp();

@@ -19,6 +19,10 @@ public abstract class SuperState implements State{
         s.handleEntry();
         this.currentState = s;
     }
+
+    public State getCurrentState() {
+        return this.currentState;
+    }
 }
 
 

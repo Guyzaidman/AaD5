@@ -8,7 +8,7 @@ public class AirConditioner {
 
     public AirConditioner(){
         this.roomTemp = 25;
-        this.chosenTemp = 25;
+//        this.chosenTemp = 25;
         this.on = new onState(this);
         this.off = new offState(this);
         this.wait = new waitState(this);
@@ -28,17 +28,28 @@ public class AirConditioner {
             this.setCurrentState(this.wait);
             this.setCurrentState(this.on);
         }
-
     }
+
     public void off(){
-
+        if (this.currentState == this.on){
+            this.setCurrentState(this.off);
+        }
     }
+
     public void setC_temp(int temp){
+        System.out.println("set c_temp to " + temp);
         this.chosenTemp = temp;
-
+        if (this.currentState == this.on){
+            this.currentState.notifyChange();
+        }
     }
+
     public void setR_temp(int temp){
+        System.out.println("set r_temp to " + temp);
         this.roomTemp = temp;
+        if (this.currentState == this.on){
+            this.currentState.notifyChange();
+        }
     }
 
     public float getCTemp() {

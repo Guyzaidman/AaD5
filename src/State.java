@@ -3,5 +3,6 @@ public interface State {
     void handleEntry();
     void handleExit();
     void handleDo();
-    public void setCurrentState(State s);
+    void setCurrentState(State s);
+    void notifyChange();
 }

@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class onState extends SuperState {
     private AirConditioner ac;
-    private State modeState;
-    private State operationState;
+    private SuperState modeState;
+    private SuperState operationState;
 
     public onState(AirConditioner ac) {
         this.ac = ac;
@@ -38,6 +38,12 @@ public class onState extends SuperState {
 
     }
 
+    @Override
+    public void notifyChange() {
+        this.modeState.notifyChange();
+        this.operationState.notifyChange();
+    }
+
     public float getCTemp(){
         return this.ac.getCTemp();
     }
@@ -45,5 +51,13 @@ public class onState extends SuperState {
 
     public float getRTemp(){
         return this.ac.getRTemp();
+    }
+
+    public State getModeState(){
+        return this.modeState.getCurrentState();
+    }
+
+    public State getOperationState(){
+        return this.operationState.getCurrentState();
     }
 }

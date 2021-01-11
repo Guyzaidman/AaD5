@@ -1,5 +1,5 @@
 public class FanningState implements State {
-    private SuperState operationState;
+    private OperationState operationState;
     public FanningState(OperationState operationState) {
         this.operationState = operationState;
     }
@@ -12,10 +12,12 @@ public class FanningState implements State {
     @Override
     public void handleEntry() {
         System.out.println("OPERATION-FANNING (120 SECONDS AT LEAST)");
+        this.operationState.setFanning(true);
     }
 
     @Override
     public void handleExit() {
+        this.operationState.setFanning(false);
 
     }
 
@@ -26,6 +28,11 @@ public class FanningState implements State {
 
     @Override
     public void setCurrentState(State s) {
+
+    }
+
+    @Override
+    public void notifyChange() {
 
     }
 }
