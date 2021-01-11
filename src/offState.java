@@ -17,7 +17,7 @@ public class offState implements State {
 
     @Override
     public void handleExit() {
-        this.ac.setC_temp(25);
+        this.ac.setC_temp(-1);
     }
 
     @Override

@@ -37,18 +37,28 @@ public class AirConditioner {
     }
 
     public void setC_temp(int temp){
-        System.out.println("set c_temp to " + temp);
-        this.chosenTemp = temp;
-        if (this.currentState == this.on){
-            this.currentState.notifyChange();
+        if(temp == -1){
+            this.chosenTemp = 25;
+        }
+        else{
+            System.out.println("set c_temp to " + temp);
+            this.chosenTemp = temp;
+            if (this.currentState == this.on){
+                this.currentState.notifyChange();
+            }
         }
     }
 
     public void setR_temp(int temp){
-        System.out.println("set r_temp to " + temp);
-        this.roomTemp = temp;
-        if (this.currentState == this.on){
-            this.currentState.notifyChange();
+        if(temp == -1){
+            this.roomTemp = 25;
+        }
+        else{
+            System.out.println("set r_temp to " + temp);
+            this.roomTemp = temp;
+            if (this.currentState == this.on){
+                this.currentState.notifyChange();
+            }
         }
     }
 
